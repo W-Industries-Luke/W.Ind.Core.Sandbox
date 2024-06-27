@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Id": -1,
+    "Email": "system@prototype.com",
+    "FirstName": "System",
+    "LastName": "Prototype",
+    "IsDeleted": false,
+    "Timestamp": "AAAAAAAAB9c=",
+    "CreatedById": -1,
+    "ModifiedById":  null,
+    "CreatedOn": "2024-06-07T00:00:00",
+    "SysEndTime": "9999-12-31T23:59:59.9999999",
+    "SysStartTime": "2024-06-08T03:41:52.3303911",
+    "UserName": "SYSTEM",
+    "NormalizedUserName": "SYSTEM",
+    "NormalizedEmail": "SYSTEM@PROTOTYPE.COM",
+    "EmailConfirmed": true,
+    "PasswordHash": "AQAAAAIAAYagAAAAECU9IiWDcY1BNXnTWViz78D4cHVYm3oMqvQ7RX2T+tkxRibZVGjx3xXQYAuOhEJqXQ==",
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0,
+    "ConcurrencyStamp": "b530f6a0-64cf-4eb4-922d-e5026a2f3c10",
+    "SecurityStamp": "98441edc-a147-4144-b722-d533e3f0183e"
+  }
+]
