@@ -32,7 +32,7 @@ public class SandboxDbContext : IdentityDbContext<CoreUser, CoreRole, long, Core
         // .FilterDeleted(): When called on an ISoftDelete entity
             // All Queries will automatically filter out records where IsDeleted == true
         builder.Entity<RefreshToken>().FilterDeleted()
-            // .OneToMany(hasOne, configure?, withOne?): Configures relationship without breaking daisychain
+            // .OneToMany(hasOne, configure?, withMany?): Configures relationship without breaking daisychain
             .OneToMany(token => token.User, configure => configure.HasForeignKey(fk => fk.UserId));
 
 
