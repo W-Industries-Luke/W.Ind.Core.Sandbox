@@ -59,15 +59,15 @@ public class SandboxDbContext : IdentityDbContext<CoreUser, CoreRole, long, Core
         // Manually injects IUserService to get the current User's ID
         var userService = _serviceProvider.GetRequiredService<IUserService>();
 
-
-        // .HandleAudit(userId): Goes through the ChangeTracker's IAuditable entities to:
-            // Update columns defined in IAuditable for temporal table
-        ChangeTracker.Entries<IAuditable>().HandleAudit(userService.GetCurrent());
-
-
         // .HandleSoftDelete(): Goes throught the ChangeTracker's ISoftDelete entities to:
             // Set it's IsDeleted property to true instead of deleting the record
+            // Goes before .HandleAudit
         ChangeTracker.Entries<ISoftDelete>().HandleSoftDelete();
+
+
+        // .HandleAudit(userId): Goes through the ChangeTracker's IAuditable entities to:
+        // Update columns defined in IAuditable for temporal table
+        ChangeTracker.Entries<IAuditable>().HandleAudit(userService.GetCurrent());
 
         return base.SaveChanges();
     }
@@ -77,9 +77,11 @@ public class SandboxDbContext : IdentityDbContext<CoreUser, CoreRole, long, Core
         var userService = _serviceProvider.GetRequiredService<IUserService>();
 
 
+        ChangeTracker.Entries<ISoftDelete>().HandleSoftDelete();
+
+
         // Can also get the current UserId asyncronously
         ChangeTracker.Entries<IAuditable>().HandleAudit(await userService.GetCurrentAsync());
-        ChangeTracker.Entries<ISoftDelete>().HandleSoftDelete();
 
         return await base.SaveChangesAsync(cancellationToken);
     }
